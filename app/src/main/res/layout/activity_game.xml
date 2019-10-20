@@ -19,7 +19,6 @@
             android:id="@+id/gallows"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/gallows"
             android:src="@drawable/ic_gallows" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -64,24 +63,22 @@
         android:id="@+id/word"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-    </LinearLayout>
+        app:layout_constraintStart_toStartOf="parent"></LinearLayout>
 
     <GridView
         android:id="@+id/input"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+
+        android:horizontalSpacing="5dp"
         android:numColumns="7"
 
         android:padding="5dp"
-        android:horizontalSpacing="5dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
