@@ -67,6 +67,10 @@ public class GameActivity extends AppCompatActivity {
         * and enables manipulation of the alpha attribute etc. on a correct guess later */
         characterViews = new TextView[currentWord.length()];
 
+        /* Remove current word view to prepare for new game
+        * This was missing in Galgeleg 1 */
+        wordLayout.removeAllViews();
+
         /* Splitting up the word into single-character TextViews */
         for (int i = 0; i<currentWord.length(); i++){
             TextView view = new TextView(this);
@@ -95,7 +99,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void letterButtonPressed(View view){
-        /* have to cast to TextView to get .getText() method */
+        /* Have to cast to TextView to get .getText() method */
         char letter = ((TextView)view).getText().toString().charAt(0);
 
         /* When a button is pressed, you should no longer be able to press it */
