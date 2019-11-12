@@ -16,4 +16,8 @@ public class Highscore {
     public int getTries() {
         return tries;
     }
+
+    public void setTries(int tries){
+        this.tries = tries;
+    }
 }

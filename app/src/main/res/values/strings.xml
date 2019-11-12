@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">s163310 HangMan</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string-array name="words">
         <item>WISH</item>
-        <item>NONDESCRIPT</item>
         <item>HEAT</item>
         <item>ABLE</item>
         <item>OVEN</item>
@@ -13,7 +14,6 @@
         <item>OCEANIC</item>
         <item>GAME</item>
         <item>BOOKS</item>
-        <item>UNINTERESTED</item>
         <item>MOTHER</item>
         <item>QUINCE</item>
         <item>JOIN</item>
@@ -27,7 +27,6 @@
         <item>FISH</item>
         <item>APATHETIC</item>
         <item>JUICE</item>
-        <item>TEENY-TINY</item>
         <item>CHAIRS</item>
         <item>MELTED</item>
         <item>CHILDREN</item>
@@ -69,7 +68,6 @@
         <item>SIP</item>
         <item>MERCIFUL</item>
         <item>DEAFENING</item>
-        <item>MAGNIFICENT</item>
         <item>PLAIN</item>
         <item>AUTOMATIC</item>
         <item>TERRIBLE</item>
@@ -105,7 +103,6 @@
         <item>MEATY</item>
         <item>STEEP</item>
         <item>BID</item>
-        <item>THOUGHTLESS</item>
         <item>ACCEPT</item>
         <item>DISAPPEAR</item>
         <item>CRASHES</item>
@@ -189,7 +186,6 @@
         <item>TINY</item>
         <item>DISCREET</item>
         <item>FLOCK</item>
-        <item>INTERESTING</item>
         <item>RELY</item>
         <item>CEASE</item>
         <item>MONTH</item>

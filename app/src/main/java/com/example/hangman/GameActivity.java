@@ -3,7 +3,9 @@ package com.example.hangman;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +16,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.hangman.Models.Highscore;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.ref.WeakReference;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
@@ -79,7 +89,7 @@ public class GameActivity extends AppCompatActivity {
             view.setTextSize(46);
             view.setWidth(140);
             view.setBackgroundResource(R.drawable.back);
-            view.setTextColor(Color.parseColor("#FAFAFA"));
+            //view.setTextColor(Color.parseColor("#FAFAFA"));
             characterViews[i] = view;
             wordLayout.addView(view);
         }
@@ -155,6 +165,42 @@ public class GameActivity extends AppCompatActivity {
         if (numberCorrect == numberCharacters){
             /* User has won */
             disableAllButton();
+
+            /* Check if new highscore */
+            SharedPreferences preferences = getSharedPreferences("shared", MODE_PRIVATE);
+            Gson gson = new Gson();
+            String json = preferences.getString("highscores", null);
+            Type type = new TypeToken<ArrayList<Highscore>>(){}.getType();
+            ArrayList<Highscore> highscores = gson.fromJson(json, type);
+
+
+            /* To avoid this taxing procedure, should probably use HashMap, but the use of HashMap
+            * would cause problems in other parts of the app */
+            boolean foundWord = false;
+            for (int i = 0; i<highscores.size(); i++){
+                Highscore hs = highscores.get(i);
+                if (hs.getWord() == currentWord){
+                    foundWord = true;
+                    if (hs.getTries() > numberCorrect+currentPart){
+                        hs.setTries(numberCorrect+currentPart);
+                        highscores.remove(i);
+                        highscores.add(0,hs);
+                        json = gson.toJson(highscores);
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putString("highscores", json);
+                        editor.apply();
+                    }
+                    break;
+                }
+            }
+            if (foundWord == false){
+                highscores.add(0, new Highscore(currentWord, numberCorrect+currentPart));
+                json = gson.toJson(highscores);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("highscores", json);
+                editor.apply();
+            }
+
 
             /* Build a new dialog window to assert that the user has won, and ask if the user wants
             to play again.
