@@ -14,20 +14,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+
+public class LostWonFragment extends Fragment {
 
 
-public class LostFragment extends Fragment {
-
-
-    public LostFragment() {
+    public LostWonFragment() {
         // Required empty public constructor
     }
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_lost, container, false);
+        View view = inflater.inflate(R.layout.fragment_lostwon, container, false);
 
         TextView textView = (TextView) view.findViewById(R.id.lostTextView);
         Button playAgainBtn = (Button) view.findViewById(R.id.playAgainButton);

@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (showLostWon){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
-                    new LostFragment()).commit();
+                    new LostWonFragment()).commit();
         } else {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
                     new HomeFragment()).commit();
