@@ -3,11 +3,17 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_head"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home Fragment"
+        android:text="Mathias Frimann\ns163310\nWelcome\nClick the navigation menu top left"
         android:textSize="24dp"
+        android:gravity="center"
         android:layout_centerInParent="true"/>
 
 

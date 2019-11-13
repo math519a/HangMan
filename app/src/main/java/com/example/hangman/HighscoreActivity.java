@@ -17,6 +17,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
+
+// ******************* DEPRECATED ******************* //
+
 public class HighscoreActivity extends AppCompatActivity {
 
     ArrayList<Highscore> mHighscores;

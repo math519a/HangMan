@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -34,12 +35,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
-                new HomeFragment()).commit();
 
+        Intent intent = getIntent();
+        boolean showLostWon = false;
+        if (intent.getExtras() != null){
+            showLostWon = intent.getExtras().getBoolean("showLostWon");
+        }
 
+        if (showLostWon){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
+                    new LostFragment()).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,
+                    new HomeFragment()).commit();
 
-        navigationView.setCheckedItem(R.id.nav_home);
+            navigationView.setCheckedItem(R.id.nav_home);
+        }
 
     }
 

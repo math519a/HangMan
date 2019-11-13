@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -89,7 +90,15 @@ public class GameActivity extends AppCompatActivity {
             view.setTextSize(46);
             view.setWidth(140);
             view.setBackgroundResource(R.drawable.back);
+
+
+            /* TODO Udkommenter den her linje får at gøre ordet der skal gættes synligt, så det ikke
+            *   er svært at teste funktionalitet*/
             //view.setTextColor(Color.parseColor("#FAFAFA"));
+
+
+
+
             characterViews[i] = view;
             wordLayout.addView(view);
         }
@@ -142,24 +151,12 @@ public class GameActivity extends AppCompatActivity {
             disableAllButton();
 
             /* Build a new dialog window to assert that the user has lost, and ask if the user wants
-            to play again.
+            to play again. ***** NOW CHANGED TO NEW FRAGMENT INTENT *******
              */
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle(":(");
-            builder.setTitle("You've lost\nThe answer was "+currentWord);
-            builder.setPositiveButton("Play again?", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    GameActivity.this.play();
-                }
-            });
-            builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    GameActivity.this.finish();
-                }
-            });
-            builder.show();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("messageLostWon", "You Lost\nThe word was "+currentWord+"\n"+numberCorrect+currentPart+" tries");
+            startActivity(intent);
+
         }
 
         if (numberCorrect == numberCharacters){
@@ -203,24 +200,13 @@ public class GameActivity extends AppCompatActivity {
 
 
             /* Build a new dialog window to assert that the user has won, and ask if the user wants
-            to play again.
+            to play again. ***** NOW CHANGED TO NEW FRAGMENT INTENT *******
              */
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Congratulations");
-            builder.setTitle("You've won\nThe answer was "+currentWord);
-            builder.setPositiveButton("Play again?", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    GameActivity.this.play();
-                }
-            });
-            builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    GameActivity.this.finish();
-                }
-            });
-            builder.show();
+
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("showLostWon", true);
+            intent.putExtra("messageLostWon", "You Won!\nThe word was "+currentWord+"\n"+(numberCorrect+currentPart)+" tries");
+            startActivity(intent);
         }
 
     }
