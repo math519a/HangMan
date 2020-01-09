@@ -4,6 +4,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <EditText
+        android:id="@+id/enterName"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_above="@+id/startGameButton"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="0dp"
+        android:hint="Please enter your name"/>
+
     <Button
         android:id="@+id/startGameButton"
         android:layout_width="match_parent"

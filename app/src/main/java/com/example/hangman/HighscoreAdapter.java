@@ -49,7 +49,7 @@ public class HighscoreAdapter extends RecyclerView.Adapter<HighscoreAdapter.High
     public void onBindViewHolder(@NonNull HighscoreViewHolder holder, int position) {
         Highscore tempItem = mHighscores.get(position);
         holder.mImageView.setImageResource(R.drawable.ic_account_circle_black_24dp);
-        holder.mTextView.setText(tempItem.getWord()+" guessed in: "+tempItem.getTries()+" tries");
+        holder.mTextView.setText(tempItem.getWord()+" guessed in: "+tempItem.getTries()+" tries by "+tempItem.getName());
     }
 
     @Override

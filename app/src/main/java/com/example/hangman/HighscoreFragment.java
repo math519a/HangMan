@@ -2,6 +2,7 @@ package com.example.hangman;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.hangman.DAL.DbContext;
 import com.example.hangman.Models.Highscore;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -29,7 +31,8 @@ public class HighscoreFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_highscore, container, false);
-        loadHighscore();
+        DbContext dbHelper = new DbContext(getContext());
+        mHighscores = dbHelper.getHighscores();
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.highscoreRecyclerView);
         HighscoreAdapter adapter = new HighscoreAdapter(mHighscores);
         recyclerView.setAdapter(adapter);
