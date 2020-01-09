@@ -2,6 +2,7 @@ package com.example.hangman;
 
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,8 @@ public class LostWonFragment extends Fragment {
         TextView textView = (TextView) view.findViewById(R.id.lostTextView);
         Button playAgainBtn = (Button) view.findViewById(R.id.playAgainButton);
         Button exitBtn = (Button) view.findViewById(R.id.exitButton);
+        MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.tada);
+        mp.start();
 
         textView.setText(getActivity().getIntent().getExtras().getString("messageLostWon"));
 
