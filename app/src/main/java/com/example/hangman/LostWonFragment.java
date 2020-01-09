@@ -33,6 +33,7 @@ public class LostWonFragment extends Fragment {
 
         textView.setText(getActivity().getIntent().getExtras().getString("messageLostWon"));
 
+
         playAgainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
